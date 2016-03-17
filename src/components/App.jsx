@@ -7,6 +7,39 @@ import Intention from './Intention.jsx'
 import Moodometer from './Moodometer.jsx'
 
 export default React.createClass({
+
+  // ----- websockets ----- //
+
+  getInitialState: function () {
+    return {
+      messages: []
+    }
+  },
+
+  componentDidMount: function () {
+    console.log("Primus is:", Primus)
+    this.socket = Primus.connect('ws://localhost:8080')
+    this.socket.on('open', function () {
+      this.socket.send('message', { message: 'client connected' })
+      
+      this.socket.on('refresh',function ( messages) {
+        console.log('messages from App.jsx - CDM', messages)
+        this.setState({ messages: messages })
+      }.bind(this))
+    
+    }.bind(this))
+
+
+  },
+
+  sendMessage: function (message) {
+    console.log('message from App.jsx - SM', message)
+    this.socket.send('message', { message: message })
+    
+  },
+
+  // ----- ----- //
+
   render() {
   	console.log('app rendering')
     return(
@@ -22,7 +55,7 @@ export default React.createClass({
 	    <Intention />
 	    <Clock />
 	    <Search />
-	    <Moodometer />
+	    <Moodometer  sendOurMessage={this.sendMessage} />
 	  </div>
 	</div>
    )

@@ -51,7 +51,7 @@ primus.on('connection', spark => {
     // cycle through each connected client
     sparks.forEach(sp => {
       sp.send('refresh', messages)
-        console.log('msg', msg)
+        console.log('msg from server.js', msg)
       })
     })
 })
