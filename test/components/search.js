@@ -13,6 +13,6 @@ describe('<Search />', () => {
   })
   it('has an iframe with a duckduckgo search box', () => {
     const wrapper = shallow(<Search />)
-    expect(wrapper.contains([<iframe src="https://duckduckgo.com/search.html?prefill=Search DuckDuckGo"frameborder="0"></iframe>])).to.equal(true)
+    expect(wrapper.contains([<iframe src="https://duckduckgo.com/search.html?prefill=Search DuckDuckGo" style={{margin: 0},{padding: 0},{width: 408},{height: 40}} frameborder="0"></iframe>])).to.equal(true)
   })
 })
