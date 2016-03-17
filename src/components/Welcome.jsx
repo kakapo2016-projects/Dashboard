@@ -27,7 +27,7 @@ module.exports = React.createClass({
     return (
       <div className = "welcome">
         <ToggleDisplay show={this.state.isName}>
-          <p>Welcome {this.state.name}! <button type="button" class="btn btn-primary" onClick={this.handleToggle}>Change</button></p>
+          <p>Welcome {this.state.name}! <button type="button" className="btn btn-default btn-xs" onClick={this.handleToggle}>Change</button></p>
         </ToggleDisplay>
         <ToggleDisplay show={!this.state.isName}>
           <p>Who are you?</p>

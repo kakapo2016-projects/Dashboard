@@ -30,7 +30,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <div>
+      <div className = "Clock">
         <h2>My Clock</h2>
         <p>{this.state.time}</p>
         <p>{this.state.am_pm}</p>
