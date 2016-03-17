@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Welcome from './Welcome.jsx'
-import Clock from './Clock'
+// import Clock from './Clock'
 import Search from './Search.jsx'
 import Intention from './Intention.jsx'
 import Moodometer from './Moodometer.jsx'
@@ -17,19 +17,15 @@ export default React.createClass({
   },
 
   componentDidMount: function () {
-    console.log("Primus is:", Primus)
+    console.log("In App.jsx CDM Primus is:", Primus)
     this.socket = Primus.connect('ws://localhost:8080')
     this.socket.on('open', function () {
       this.socket.send('message', { message: 'client connected' })
-      
       this.socket.on('refresh',function ( messages) {
         console.log('messages from App.jsx - CDM', messages)
         this.setState({ messages: messages })
       }.bind(this))
-    
     }.bind(this))
-
-
   },
 
   sendMessage: function (message) {
@@ -53,7 +49,7 @@ export default React.createClass({
 	  <div className="col-md-6 col-md-offset-3">
 	    <Welcome />
 	    <Intention />
-	    <Clock />
+	    {/*<Clock />*/}
 	    <Search />
 	    <Moodometer  sendOurMessage={this.sendMessage} />
 	  </div>

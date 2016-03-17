@@ -45,9 +45,10 @@ var sparks = []
 
 primus.on('connection', spark => {
   sparks.push(spark)
-  console.log('connection established')
+  console.log('server.js - primus - says: connection established')
   spark.on('message', msg => {
     messages.push(msg)
+    console.log("server.js - primus - says: ", msg)
     // cycle through each connected client
     sparks.forEach(sp => {
       sp.send('refresh', messages)
