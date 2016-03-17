@@ -25,7 +25,7 @@ module.exports = React.createClass({
           <input type="text" onKeyPress = {this.handleKeyPress} />
         </ToggleDisplay>
         <ToggleDisplay show={this.state.isIntention}>
-          <p className="intentionresult" onClick={handleToggle}>
+          <p className="intentionresult" onClick={this.handleToggle}>
             Your intention for today is {this.state.value}
           </p>
         </ToggleDisplay>
