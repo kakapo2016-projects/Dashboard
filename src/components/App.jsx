@@ -5,7 +5,7 @@ export default React.createClass({
   render() {
     return
       <div id='app'>
-        <h1>THIS IS A PASSING TEST</h1>
+        <h2>THIS IS A PASSING TEST</h2>
       </div>
   }
 })
