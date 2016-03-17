@@ -18,28 +18,24 @@ module.exports = React.createClass({
 mixins:[SetIntervalMixin],
   getInitialState: function() {
      return {
-       time: "",
-       am_pm: ""
+       time: ""
      };
    },
    componentDidMount: function() {
      this.setInterval(this.startTime)
    },
-  //  checkTime: function(i) {
-  //     if (i < 10) {i = "0" + i.toString()};  // add zero in front of numbers < 10
-  //     return i;
-  // },
+
    startTime: function () {
      let today = new Date();
      let h = today.getHours();
      let m = today.getMinutes();
      let s = today.getSeconds();
+     let a = ""
      console.log(h, m, s)
      if (m < 10) {m = "0" + m.toString()}
      if (s < 10) {s = "0" + s.toString()}
-    //  m = checkTime(m);
-    //  s = checkTime(s);
-     this.setState({time: h + ":" + m + ":" + s})
+     if (h > 12) {h = h-12; a = "pm"} else {a = "am"}
+     this.setState({time: h + ":" + m + ":" + s + " " + a})
      console.log(s)
      // document.getElementById("app").innerHTML =
      // h + ":" + m + ":" + s;
@@ -50,7 +46,7 @@ mixins:[SetIntervalMixin],
 
     return (
       <div className="Clock">
-        <p>{this.state.time} {this.state.am_pm}</p>
+        <p>{this.state.time}</p>
       </div>
     )
   }
