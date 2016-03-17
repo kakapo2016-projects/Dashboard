@@ -23,3 +23,17 @@ h1 small {
   font-size: 2vw;
 
 }
+
+.welcome {
+  font-size: 5vw;
+}
+
+
+.Clock {
+  font-size: 8vw;
+  font-family: 'Orbitron', sans-serif;
+  color: green;
+  background-color: black;
+  width: 300;
+  text-align: center;
+}
