@@ -34,7 +34,7 @@ mixins:[SetIntervalMixin],
      console.log(h, m, s)
      if (m < 10) {m = "0" + m.toString()}
      if (s < 10) {s = "0" + s.toString()}
-     if (h > 12) {h = h-12; a = "pm"} else {a = "am"}
+     if (h > 12) {a = "pm"; h = h-12} else if (h === 12){ a = "pm"} else {a = "am"}
      this.setState({time: h + ":" + m + ":" + s + " " + a})
      console.log(s)
      // document.getElementById("app").innerHTML =
