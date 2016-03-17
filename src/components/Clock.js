@@ -1,5 +1,3 @@
-//create component constructor
-'use strict'
 import React from 'react'
 
 
@@ -14,8 +12,7 @@ module.exports = React.createClass({
 
   render: function () {
 
-    const startTime() => {
-
+    function startTime () {
       let today = new Date();
       let h = today.getHours();
       let m = today.getMinutes();
@@ -25,26 +22,19 @@ module.exports = React.createClass({
       document.getElementById("app").innerHTML =
       h + ":" + m + ":" + s;
       let t = setTimeout(startTime, 500);
-  }
+    }
 
-  const checkTime(i) => {
-      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-      return i;
-  }
-
-
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
 
     return (
-        <div>
-          <h2>My Clock</h2>
-          <p>{this.state.time}</p>
-          <p>{this.state.am_pm}</p>
-        <div>
-
-        }
-
-
-        }
-
-      }
-    });
+      <div>
+        <h2>My Clock</h2>
+        <p>{this.state.time}</p>
+        <p>{this.state.am_pm}</p>
+      </div>
+    )
+  }
+});

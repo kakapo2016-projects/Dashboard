@@ -1,6 +1,8 @@
 
 import React from 'react'
-// import Clock from './Clock'
+import Clock from './Clock'
+import Search from './Search.jsx'
+import Intention from './Intention.jsx'
 
 export default React.createClass({
   render() {
@@ -8,6 +10,9 @@ export default React.createClass({
       <div id='app'>
         <h2>THIS IS A PASSING TEST</h2>
 
+        <Intention />
+        <Clock />
+        <Search />
 
       </div>)
   }
