@@ -13,38 +13,38 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-// var primus = new Primus(server, { 
-//   port: '8080',
-//   origins: '*',
-//   transformer: 'websockets',
-//   parser: 'JSON'
-// })
+var primus = new Primus(server, { 
+  port: '8080',
+  origins: '*',
+  transformer: 'websockets',
+  parser: 'JSON'
+})
 
-// var messages = [
-//   { message: 'hello from server' }
-// ]
+var messages = [
+  { message: 'hello from server' }
+]
 
-// var sparks = []
+var sparks = []
 
 
-// primus.on('connection', spark => {
+primus.on('connection', spark => {
   
-//   sparks.push(spark)
+  sparks.push(spark)
   
-//   console.log('connection established')
+  console.log('connection established')
 
-//   spark.on('message', msg => {
-//     messages.push(msg)
+  spark.on('message', msg => {
+    messages.push(msg)
 
-//     // cycle through each connected client
-//     sparks.forEach(sp => {
-//       sp.send('refresh', messages)
-//         console.log('msg', msg)
-//       })
-//     })
+    // cycle through each connected client
+    sparks.forEach(sp => {
+      sp.send('refresh', messages)
+        console.log('msg', msg)
+      })
+    })
 
 
-// })
+})
 
 if (require.main === module) {
   server.listen(port, function () {
