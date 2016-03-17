@@ -8,13 +8,18 @@ import Intention from './Intention.jsx'
 export default React.createClass({
   render() {
     return(
-      <div id='app'>
-        <h2>THIS IS A PASSING TEST</h2>
-        <Welcome />
-        <Intention />
-        <Clock />
-        <Search />
-
-      </div>)
+<div id='app' className="row">
+  <div className="col-md-12 head">
+    <div class="page-header">
+      <h1>Dashr <small>Personal dashboard</small></h1>
+    </div>
+  </div>
+  <div className="col-md-6 col-md-offset-3">
+    <Welcome />
+    <Intention />
+    <Clock />
+    <Search />
+  </div>
+</div>)
   }
 })
