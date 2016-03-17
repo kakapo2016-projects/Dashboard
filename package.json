@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server --inline --content-base public/ --history-api-fallback",
+    "start:prod": "npm run build && node server.bundle.js",
+    "build:client": "webpack",
+    "build:server": "webpack --config webpack.server.config.js",
+    "build": "npm run build:client && npm run build:server"
   },
   "repository": {
     "type": "git",
@@ -29,6 +35,7 @@
     "babelify": "^7.2.0",
     "body-parser": "^1.15.0",
     "browserify": "^13.0.0",
+    "express": "^4.13.4",
     "primus": "^5.0.1",
     "primus.io": "^3.2.0",
     "ramda": "^0.19.1",
@@ -37,16 +44,18 @@
     "react-router": "^2.0.1",
     "react-toggle-display": "^2.0.2",
     "tap-spec": "^4.1.1",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "ws": "^1.0.1"
   },
-
   "devDependencies": {
-   "chai": "^3.5.0",
-   "chai-enzyme": "^0.4.0",
-   "cheerio": "^0.20.0",
-   "enzyme": "^2.0.0",
-   "jsdom": "^8.0.2",
-   "mocha": "^2.4.5",
-   "react-addons-test-utils": "^0.14.7"
- }
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.4.0",
+    "cheerio": "^0.20.0",
+    "enzyme": "^2.0.0",
+    "jsdom": "^8.0.2",
+    "mocha": "^2.4.5",
+    "react-addons-test-utils": "^0.14.7",
+    "webpack": "^1.12.13",
+  "webpack-dev-server": "^1.14.1"
+  }
 }
