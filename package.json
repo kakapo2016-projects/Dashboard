@@ -7,7 +7,8 @@
     "dev:watch": "watchify src/index.js -o public/bundle.js -dv -t babelify",
     "dev:livereload": "wtch -d public | garnish --level debug",
     "dev:serve": "node-dev server.js",
-    "dev": "NODE_ENV=development npm-run-all -p dev:*"
+    "dev": "NODE_ENV=development npm-run-all -p dev:*",
+    "start": "nodemon server.js"
   },
   "babel": {
     "presets": [
@@ -53,6 +54,7 @@
     "react": "^0.14.7",
     "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-localstorage": "^0.2.9",
     "react-router": "^2.0.1",
     "react-toggle-display": "^2.0.2",
     "tap-spec": "^4.1.1",
