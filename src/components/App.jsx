@@ -1,5 +1,6 @@
+
 import React from 'react'
-import Clock from 'clock'
+// import Clock from './Clock'
 
 export default React.createClass({
   render() {
