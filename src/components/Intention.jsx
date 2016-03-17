@@ -12,7 +12,7 @@ module.exports = React.createClass({
   handleKeyPress: function (e) {
     if (e.key === 'Enter') {
       this.setState({isIntention: !this.state.isIntention, value: e.target.value})
-    }    
+    }
   },
   handleToggle: function () {
     this.setState({isIntention: !this.state.isIntention})
@@ -32,4 +32,4 @@ module.exports = React.createClass({
       </div>
     )
   }
-}
+})
