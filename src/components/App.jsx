@@ -7,13 +7,13 @@ import Intention from './Intention.jsx'
 export default React.createClass({
   render() {
     return(
-      <div id='app'>
-        <h2>THIS IS A PASSING TEST</h2>
-
-        <Intention />
-        <Clock />
-        <Search />
-
+      <div id='app' className="row">
+        <h1 className="header col-md-12">THIS IS A PASSING TEST</h1>
+        <div className="col-md-6 col-md-offset-3">
+          <Intention />
+          <Clock />
+          <Search />
+        </div>
       </div>)
   }
 })
