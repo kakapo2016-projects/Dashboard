@@ -3,24 +3,33 @@ import ToggleDisplay from 'react-toggle-display';
 
 
 module.exports = React.createClass({
-  handleChange: function () {
-    // Adds contents of input field into text
-    // Toggles from option 1 to option 2
+  getInitialState: function () {
+    return {
+      isIntention: false,
+      value: ""
+    }
+  },
+  handleKeyPress: function (e) {
+    if (e.key === 'Enter') {
+      this.setState({isIntention: !this.state.isIntention, value: e.target.value})
+    }
   },
   handleToggle: function () {
-    // Toggles state from option 2 to option 1
+    this.setState({isIntention: !this.state.isIntention})
   },
   render:function () {
     return (
-      <ToggleDisplay show={!this.state.isIntention}>
-        // Option 1: Text, what is your intention for the day.
-        // Input field, on enter, triggers handle change function
-      </ToggleDisplay>
-
-      <ToggleDisplay show={this.state.isIntention}>
-        // Option 2: Text "Focus on [intention]"
-        // Toggles on click
-      </ToggleDisplay>
+      <div className="intention">
+        <ToggleDisplay show={!this.state.isIntention}>
+          <p className="intentionquestion">What is your intention for the day?</p>
+          <input type="text" onKeyPress = {this.handleKeyPress} />
+        </ToggleDisplay>
+        <ToggleDisplay show={this.state.isIntention}>
+          <p className="intentionresult" onClick={handleToggle}>
+            Your intention for today is {this.state.value}
+          </p>
+        </ToggleDisplay>
+      </div>
     )
   }
-}
+})

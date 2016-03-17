@@ -1,11 +1,14 @@
-var React = require('react')
+
+import React from 'react'
+// import Clock from './Clock'
 
 export default React.createClass({
   render() {
-    return (
-      <div>
+    return(
+      <div id='app'>
         <h2>THIS IS A PASSING TEST</h2>
-      </div>
-    )
+
+
+      </div>)
   }
 })
