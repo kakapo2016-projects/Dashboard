@@ -63,13 +63,8 @@
     "enzyme": "^1.6.0",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
-<<<<<<< HEAD
-   "react-addons-test-utils": "^0.14.7"
- }
-=======
     "react-addons-test-utils": "^0.14.7",
     "webpack": "^1.12.13",
-  "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1"
   }
->>>>>>> abb7c9ac28cd7473ab9a60bae107567d897239fc
 }
