@@ -5,7 +5,7 @@ import App from './components/App.jsx'
 
 
 domready( function () {
-  console.log('HERE!')
+  console.log('HERE - in index.js!')
   ReactDOM.render(
     <App />, document.getElementById('app')
   )
