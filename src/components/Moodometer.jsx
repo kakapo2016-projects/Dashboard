@@ -7,26 +7,31 @@ module.exports = React.createClass({
     return {}
   },
 
-  handleChange: function () {
-    // do event handling
-    // let value = this.refs.input.value   
-    alert("Here goes...") 
-    this.props.sendOurMessage("Hello Ash")
+  handleChange: function (value) {
+    return function () {
+      this.props.sendOurMessage(value)
+    }.bind(this)
   },
 
   render:   function () {
-    let msg = this.props.msg
+    var mood = this.props.moodAverage
+
     return (
       <div className="moodometer">
         <form >
-          // <input type="radio" name="mood" value="1" onChange={ this.WRITETHISHANDLER} checked={this.IDONTKNOWWHATTHISMEANS} />
-          <input type="radio" name="mood" value="2" />
-          <input type="radio" name="mood" value="3" />
-          <input type="radio" name="mood" value="4" />
-          <input type="radio" name="mood" value="5" />
+          1<input type="radio" name="mood" value="1" onChange={ this.handleChange(1)} />
+          <input type="radio" name="mood" value="2" onChange={ this.handleChange(2)} />
+          <input type="radio" name="mood" value="3" onChange={ this.handleChange(3)} />
+          <input type="radio" name="mood" value="4" onChange={ this.handleChange(4)} />
+          <input type="radio" name="mood" value="5" onChange={ this.handleChange(5)} />
+          <input type="radio" name="mood" value="1" onChange={ this.handleChange(6)} />
+          <input type="radio" name="mood" value="2" onChange={ this.handleChange(7)} />
+          <input type="radio" name="mood" value="3" onChange={ this.handleChange(8)} />
+          <input type="radio" name="mood" value="4" onChange={ this.handleChange(9)} />
+          <input type="radio" name="mood" value="5" onChange={ this.handleChange(10)} />
+          <input type="radio" name="mood" value="5" onChange={ this.handleChange(11)} />11
         </form>
-        <div>Moodometer says Hi</div>
-        <button type="button" onClick={ this.handleChange}>Click Me!</button>
+        <div>Moodometer says {mood}</div>
       </div>
     )
   }
