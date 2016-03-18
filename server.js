@@ -43,6 +43,7 @@ var messages = [
 
 var sparks = []
 
+
 primus.on('connection', spark => {
   sparks.push(spark)
   console.log('connection established')
@@ -55,6 +56,7 @@ primus.on('connection', spark => {
       })
     })
 })
+
 
 // ----- set port and start server ----- //
 
