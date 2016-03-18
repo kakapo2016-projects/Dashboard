@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
+    "cover": "istanbul cover _mocha -- --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
     "dev:watch": "watchify src/index.js -o public/bundle.js -dv -t babelify",
     "dev:livereload": "wtch -d public | garnish --level debug",
     "dev:serve": "node-dev server.js",
@@ -46,6 +47,7 @@
     "domready": "^1.0.8",
     "express": "^4.13.4",
     "if-env": "^1.0.0",
+    "istanbul": "^0.4.2",
     "lodash": "^4.6.1",
     "node-dev": "^3.1.0",
     "npm-run-all": "^1.5.3",

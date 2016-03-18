@@ -26,9 +26,9 @@ export default React.createClass({
     this.socket.on('open', function () {
       //this.socket.send('message', { message: 'client connected' })
         this.socket.on('refresh',function ( avrg) {
-        console.log('messages received from server in App.jsx - CDM', avrg)
-        this.setState({ avrg: avrg })
-      }.bind(this))
+          console.log('messages received from server in App.jsx - CDM', avrg)
+          this.setState({ avg: avrg })
+        }.bind(this))
       }.bind(this))
     },
 
@@ -36,7 +36,6 @@ export default React.createClass({
     console.log('message from App.jsx - SM', message)
     var id = ''
     this.socket.send('message', { message: message, id:id })
-
   },
 
   // ----- render ----- //
@@ -58,10 +57,9 @@ export default React.createClass({
     <Intention />
     <Clock />
     <Search />
-    <Moodometer  sendOurMessage={this.sendMessage} />
+    <Moodometer sendOurMessage={this.sendMessage} />
     <Timer />
   </div>
-
 </div>
 
 )}
