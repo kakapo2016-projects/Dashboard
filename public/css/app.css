@@ -37,3 +37,23 @@ h1 small {
   width: 300;
   text-align: center;
 }
+
+.Todo{
+  text-align: left;
+  list-style-type: none;
+  border: solid black 2px;
+}
+
+li.Todo {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.Done {
+  list-style-type: none;
+  text-decoration: line-through;
+}
+
+.intention {
+  padding: 5px;
+}
