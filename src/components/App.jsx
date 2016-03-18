@@ -4,9 +4,9 @@ import Welcome from './Welcome.jsx'
 import Clock from './Clock'
 import Search from './Search.jsx'
 import Intention from './Intention.jsx'
+import Timer from './Timer.jsx'
 import Todo from './Todo.jsx'
 import Moodometer from './Moodometer.jsx'
-
 
 export default React.createClass({
 
@@ -14,33 +14,31 @@ export default React.createClass({
 
   getInitialState: function () {
     return {
-      messages: []
+      messages: [],
+      avg: 0
     }
   },
 
   componentDidMount: function () {
-    console.log("Primus is:", Primus)
+    console.log("In App.jsx CDM Primus is:", Primus)
     this.socket = Primus.connect('ws://localhost:8080')
+    console.log("Socket is: ", this.socket)
     this.socket.on('open', function () {
-      this.socket.send('message', { message: 'client connected' })
-
-      this.socket.on('refresh',function ( messages) {
-        console.log('messages from App.jsx - CDM', messages)
-        this.setState({ messages: messages })
+      //this.socket.send('message', { message: 'client connected' })
+        this.socket.on('refresh',function ( avrg) {
+          console.log('messages received from server in App.jsx - CDM', avrg)
+          this.setState({ avg: avrg })
+        }.bind(this))
       }.bind(this))
-
-    }.bind(this))
-
-
-  },
+    },
 
   sendMessage: function (message) {
     console.log('message from App.jsx - SM', message)
-    this.socket.send('message', { message: message })
-
+    var id = ''
+    this.socket.send('message', { message: message, id:id })
   },
 
-  // ----- ----- //
+  // ----- render ----- //
 
   render() {
   	console.log('app rendering')
@@ -59,9 +57,10 @@ export default React.createClass({
     <Intention />
     <Clock />
     <Search />
-
+    <Moodometer sendOurMessage={this.sendMessage} />
+    <Timer />
   </div>
-</div>)
+</div>
 
-  }
+)}
 })
