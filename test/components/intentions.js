@@ -20,17 +20,17 @@ describe('<Intention />', () => {
     const wrapper = shallow(<Intention />)
     expect(wrapper.find('p.intentionresult')).to.be.length(1)
   })
-  // it('the entered intention is displayed', () => {
-  //   const wrapper = shallow(<Intention />)
-  //   wrapper.find('input').sendkeys('test intention')
-  //   const event = { key: 'Enter', keyCode: 13, which: 13 }
-  //   input.simulate('keyDown', event).then(function(){
-  //     let output = wrapper.find('p.intentionresult').text()
-  //     return (output.getAttribute("value"))
-  //   } ).then(function (value){
-  //     expect(value).to.equal('Your intention for today is test intention')
-  //
-  //   })
-  //
-  // })
+  it('the entered intention is displayed', () => {
+    //arrange
+    const wrapper = mount(<Intention />)
+    var input = wrapper.find('input')
+    const event = { key: 'Enter', keyCode: 13, which: 13 }
+    var expected = 'test intention'
+    //action
+    input.get(0).value = expected
+    input.simulate('keyPress', event)
+    //assert
+    let output = wrapper.find('p.intentionresult').text()
+    expect(output).to.equal('Your intention for today is test intention')
+  })
 })
