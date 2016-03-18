@@ -8,10 +8,9 @@ module.exports = React.createClass({
   },
 
   handleChange: function (value) {
-    // do event handling
-    // let value = this.refs.input.value   
-    alert("Here goes...") 
-    this.props.sendOurMessage("The mood is " + value)
+    return function () {
+      this.props.sendOurMessage(value)
+    }.bind(this)
   },
 
   render:   function () {
@@ -27,7 +26,6 @@ module.exports = React.createClass({
           <input type="radio" name="mood" value="5" onChange={ this.handleChange(5)} />
         </form>
         <div>Moodometer says {msg}</div>
-        <button type="button" onClick={ this.handleChange}>Click Me!</button>
       </div>
     )
   }

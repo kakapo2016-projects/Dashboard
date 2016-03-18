@@ -19,6 +19,7 @@ export default React.createClass({
   componentDidMount: function () {
     console.log("In App.jsx CDM Primus is:", Primus)
     this.socket = Primus.connect('ws://localhost:8080')
+    console.log("Socket is: ", this.socket)
     this.socket.on('open', function () {
       this.socket.send('message', { message: 'client connected' })
       this.socket.on('refresh',function ( messages) {
@@ -30,7 +31,9 @@ export default React.createClass({
 
   sendMessage: function (message) {
     console.log('message from App.jsx - SM', message)
-    this.socket.send('message', { message: message })
+    // this.socket.send('message', { message: message })
+    var id = ''
+    this.socket.send('message', { message: message, id:id })
     
   },
 

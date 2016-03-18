@@ -41,14 +41,21 @@ var messages = [
   { message: 'hello from server' }
 ]
 
+var connMessages = []
+
 var sparks = []
 
 primus.on('connection', spark => {
   sparks.push(spark)
   console.log('server.js - primus - says: connection established')
   spark.on('message', msg => {
+    console.log("server.js - primus - message is now: ", msg)
+    msg.id = spark.id
+    console.log("server.js - primus - message with spark.id is now: ", msg)
     messages.push(msg)
-    console.log("server.js - primus - says: ", msg)
+    // connMessages.push(connMsg)
+    console.log("server.js - primus - says: msg is ", msg)
+    // console.log("server.js - primus - says: connMsg is ", connMsg)
     // cycle through each connected client
     sparks.forEach(sp => {
       sp.send('refresh', messages)
