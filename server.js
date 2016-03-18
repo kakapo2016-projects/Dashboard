@@ -27,24 +27,24 @@ var messages = [
 var sparks = []
 
 
-primus.on('connection', spark => {
+// primus.on('connection', spark => {
   
-  sparks.push(spark)
+//   sparks.push(spark)
   
-  console.log('connection established')
+//   console.log('connection established')
 
-  spark.on('message', msg => {
-    messages.push(msg)
+//   spark.on('message', msg => {
+//     messages.push(msg)
 
-    // cycle through each connected client
-    sparks.forEach(sp => {
-      sp.send('refresh', messages)
-        console.log('msg', msg)
-      })
-    })
+//     // cycle through each connected client
+//     sparks.forEach(sp => {
+//       sp.send('refresh', messages)
+//         console.log('msg', msg)
+//       })
+//     })
 
 
-})
+// })
 
 if (require.main === module) {
   server.listen(port, function () {

@@ -4,6 +4,7 @@ import Welcome from './Welcome.jsx'
 import Clock from './Clock'
 import Search from './Search.jsx'
 import Intention from './Intention.jsx'
+import Todo from './Todo.jsx'
 
 export default React.createClass({
   render() {
@@ -14,11 +15,15 @@ export default React.createClass({
       <h1>Dashr <small>Personal dashboard</small></h1>
     </div>
   </div>
-  <div className="col-md-6 col-md-offset-3">
+  <div className="col-md-3">
+    <Todo />
+  </div>
+  <div className="col-md-6">
     <Welcome />
     <Intention />
     <Clock />
     <Search />
+
   </div>
 </div>)
   }

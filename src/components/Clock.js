@@ -34,13 +34,11 @@ mixins:[SetIntervalMixin],
      let h = today.getHours();
      let m = today.getMinutes();
      let s = today.getSeconds();
-     console.log(h, m, s)
      if (m < 10) {m = "0" + m.toString()}
      if (s < 10) {s = "0" + s.toString()}
     //  m = checkTime(m);
     //  s = checkTime(s);
      this.setState({time: h + ":" + m + ":" + s})
-     console.log(s)
      // document.getElementById("app").innerHTML =
      // h + ":" + m + ":" + s;
     //  let t = setTimeout(startTime, 500);
