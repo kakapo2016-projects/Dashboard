@@ -38,7 +38,7 @@ app.get('/test', function (req, res) {
 // ----- make a connection and respond ----- //
 
 var messages = [
-  { message: 'hello from server' }
+  // { message: 'hello from server' }
 ]
 
 var connMessages = []
@@ -56,12 +56,24 @@ primus.on('connection', spark => {
     // connMessages.push(connMsg)
     console.log("server.js - primus - says: msg is ", msg)
     // console.log("server.js - primus - says: connMsg is ", connMsg)
-    // cycle through each connected client
-    sparks.forEach(sp => {
-      sp.send('refresh', messages)
-        console.log('msg from server.js', msg)
-      })
+
+    // ------ logic to average the mood data ----- //
+    var moodTotal = 0
+    var moodAvg = 0
+    messages.forEach(sp => {
+      moodTotal += sp.message
     })
+    moodAvg = Math.ceil(moodTotal / messages.length)
+    console.log("server.js - primus - moodAvg is: ", moodAvg)
+    spark.send('refresh', moodAvg)
+    //-------------------------------------------------------------- //
+
+    // cycle through each connected client
+    // sparks.forEach(sp => {
+    //   sp.send('refresh', messages)
+    //   console.log('server.js - primus - the  messages are: ', messages)
+    // })
+  })
 })
 
 // ----- set port and start server ----- //

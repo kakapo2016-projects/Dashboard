@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Welcome from './Welcome.jsx'
-// import Clock from './Clock'
+import Clock from './Clock'
 import Search from './Search.jsx'
 import Intention from './Intention.jsx'
 import Moodometer from './Moodometer.jsx'
@@ -12,7 +12,8 @@ export default React.createClass({
 
   getInitialState: function () {
     return {
-      messages: []
+      messages: [],
+      avg: 0
     }
   },
 
@@ -21,10 +22,10 @@ export default React.createClass({
     this.socket = Primus.connect('ws://localhost:8080')
     console.log("Socket is: ", this.socket)
     this.socket.on('open', function () {
-      this.socket.send('message', { message: 'client connected' })
-      this.socket.on('refresh',function ( messages) {
-        console.log('messages from App.jsx - CDM', messages)
-        this.setState({ messages: messages })
+      // this.socket.send('message', { message: 'client connected' })
+      this.socket.on('refresh',function ( avrg) {
+        console.log('messages received from server in App.jsx - CDM', avrg)
+        this.setState({avg: avrg})
       }.bind(this))
     }.bind(this))
   },
@@ -52,9 +53,9 @@ export default React.createClass({
 	  <div className="col-md-6 col-md-offset-3">
 	    <Welcome />
 	    <Intention />
-	    {/*<Clock />*/}
+	    <Clock />
 	    <Search />
-	    <Moodometer  sendOurMessage={this.sendMessage} />
+	    <Moodometer moodAverage={this.state.avg} sendOurMessage={this.sendMessage} />
 	  </div>
 	</div>
    )
